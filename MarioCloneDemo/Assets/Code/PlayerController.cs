@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float runSpeed;
-    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float runSpeed = 5.0f;
+    [SerializeField] private float jumpSpeed = 5.0f;
 
     [SerializeField] private Vector2 direction;
 
@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         if (Input.GetButtonDown("Jump"))
+        {
+            rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         }
